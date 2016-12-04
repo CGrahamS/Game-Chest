@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/gameImageView"
+        android:src="@drawable/lttp"
+        android:scaleType="fitXY"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The Legend of Zelda: A Link to the Past"
+            android:textSize="14sp"
+            android:id="@+id/gameNameTextView"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1991-11-21 00:00:00"
+            android:id="@+id/gameReleaseDateTextView"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SNES, WSHP, WiiU, N3DS"
+            android:id="@+id/gamePlatformsTextView"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The third installment in the Zelda series makes a return to the top-down 2D gameplay found in the first game. This time around, Link needs to travel between the light and dark world in order to set things straight in the kingdom of Hyrule."
+            android:id="@+id/gameDeckTextView"/>
+
+    </LinearLayout>
+
+</LinearLayout>

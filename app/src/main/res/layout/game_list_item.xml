@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:text="The Legend of Zelda: A Link to the Past"
             android:textSize="14sp"
+            android:textStyle="bold"
             android:id="@+id/gameNameTextView"/>
 
         <TextView

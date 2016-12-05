@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (v == mGameBrowseButton) {
             String game = mGameSearchEditText.getText().toString();
-            Intent intent = new Intent(MainActivity.this, GameSearchListActivity.class);
-            intent.putExtra("game", game);
+            Intent intent = new Intent(MainActivity.this, GameBrowseActivity.class);
             startActivity(intent);
         }
     }

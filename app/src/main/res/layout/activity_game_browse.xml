@@ -9,4 +9,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.epicodus.gamechest.ui.GameBrowseActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Under Construction!"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
 </RelativeLayout>

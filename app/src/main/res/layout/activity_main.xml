@@ -7,15 +7,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.epicodus.gamechest.MainActivity">
+    tools:context=".ui.MainActivity">
 
     <TextView
+        style="@style/customHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="72dp"
-        android:textSize="26sp"
-        android:text="GAME CHEST"
+        android:text="@string/main_header"
         android:id="@+id/mainHeaderTextView"/>
 
     <EditText
@@ -24,7 +23,7 @@
         android:layout_below="@+id/mainHeaderTextView"
         android:gravity="center"
         android:textSize="20sp"
-        android:hint="Zelda..."
+        android:hint="@string/game_search_hint"
         android:id="@+id/gameSearchEditText"/>
 
     <Button
@@ -32,8 +31,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/gameSearchEditText"
-        android:text="SEARCH FOR GAME"
+        android:text="@string/game_search_button"
         android:id="@+id/gameSearchButton"/>
+
+    <!--
+    I had to place this about the linear layout so it could reference the sign_in_button
+    -->
+    <Button
+        style="@style/CustomButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/sign_in_button"
+        android:id="@+id/signInButton"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -47,25 +57,16 @@
             style="@style/CustomButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="BROWSE GAMES"
+            android:text="@string/game_browse_button"
             android:id="@+id/gameBrowseButton"/>
 
         <Button
             style="@style/CustomButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/gameBrowseButton"
-            android:text="BROWSE PLATFORMS"
+            android:text="@string/platform_browse_button"
             android:id="@+id/platformBrowseButton"/>
 
     </LinearLayout>
-
-    <Button
-        style="@style/CustomButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="SIGN IN"
-        android:id="@+id/signInButton"/>
 
 </RelativeLayout>

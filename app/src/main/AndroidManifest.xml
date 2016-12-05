@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.epicodus.gamechest">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -17,13 +17,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ui.GameSearchListActivity">
+        <activity android:name=".ui.GameSearchListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.epicodus.gamechest.ui.MainActivity">
-            </meta-data>
+                android:value="com.epicodus.gamechest.ui.MainActivity"></meta-data>
         </activity>
+        <activity android:name=".ui.GameBrowseActivity"></activity>
     </application>
 
 </manifest>

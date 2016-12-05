@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.gameSearchButton) Button mGameSearchButton;
     @Bind(R.id.gameSearchEditText) EditText mGameSearchEditText;
+    @Bind(R.id.gameBrowseButton) Button mGameBrowseButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +24,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ButterKnife.bind(this);
 
         mGameSearchButton.setOnClickListener(this);
+        mGameBrowseButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         if (v == mGameSearchButton) {
+            String game = mGameSearchEditText.getText().toString();
+            Intent intent = new Intent(MainActivity.this, GameSearchListActivity.class);
+            intent.putExtra("game", game);
+            startActivity(intent);
+        }
+        if (v == mGameBrowseButton) {
             String game = mGameSearchEditText.getText().toString();
             Intent intent = new Intent(MainActivity.this, GameSearchListActivity.class);
             intent.putExtra("game", game);

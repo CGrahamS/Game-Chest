@@ -38,7 +38,6 @@ public class GiantBombService {
                 .addQueryParameter("query", game)
                 .addQueryParameter("resources", "game");
         String url = urlBuilder.build().toString();
-        Log.d(TAG, url);
 
         Request request = new Request.Builder()
                 .url(url)

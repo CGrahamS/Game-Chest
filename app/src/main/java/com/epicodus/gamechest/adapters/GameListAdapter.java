@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.epicodus.gamechest.R;
 import com.epicodus.gamechest.models.Game;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -48,6 +49,7 @@ public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.GameVi
     public class GameViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.gameNameTextView) TextView mGameNameTextView;
         @Bind(R.id.gameReleaseDateTextView) TextView mGameReleaseDateTextView;
+        @Bind(R.id.gameImageView) ImageView mGameImageView;
 
         private Context mContext;
 
@@ -60,6 +62,7 @@ public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.GameVi
         public void bindGame(Game game) {
             mGameNameTextView.setText(game.getName());
             mGameReleaseDateTextView.setText(game.getReleaseDate());
+            Picasso.with(mContext).load(game.getImage()).into(mGameImageView);
         }
 
     }

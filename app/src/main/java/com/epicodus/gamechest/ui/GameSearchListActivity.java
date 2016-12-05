@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.epicodus.gamechest.adapters.GameListAdapter;
 import com.epicodus.gamechest.models.Game;
@@ -23,6 +24,7 @@ import okhttp3.Response;
 
 public class GameSearchListActivity extends AppCompatActivity {
     public static final String TAG = GameSearchListActivity.class.getSimpleName();
+    @Bind(R.id.gameSearchTextView) TextView mGameSearchTextView;
     @Bind(R.id.gameRecyclerView) RecyclerView mGameRecyclerView;
     private GameListAdapter mAdapter;
     public ArrayList<Game> mGames = new ArrayList<>();
@@ -34,7 +36,7 @@ public class GameSearchListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         Intent intent = getIntent();
         String game = intent.getStringExtra("game");
-        Log.d(TAG, game);
+        mGameSearchTextView.setText("Results for: " + '"' + game + '"');
 
         getGames(game);
     }
@@ -66,8 +68,6 @@ public class GameSearchListActivity extends AppCompatActivity {
                         }
 
                         mAdapter = new GameListAdapter(getApplicationContext(), mGames);
-                        Log.d(TAG, mAdapter.toString());
-                        Log.d(TAG, mGameRecyclerView.toString());
                         mGameRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager =
                                 new LinearLayoutManager(GameSearchListActivity.this);

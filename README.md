@@ -10,9 +10,11 @@ Game Chest will allow users to search and browse for games. Then they'll be able
 
 ## Specs
 
-| BEHAVIOR                                         | INPUT    | OUTPUT   |
-|--------------------------------------------------|----------|----------|
-| Program navigates to different application views |          |          |
+| BEHAVIOR                                                | INPUT    | OUTPUT   |
+|---------------------------------------------------------|----------|----------|
+| Program navigates to different activities               |          |          |
+| Program passes user input from one activity to another. | Zelda    | Zelda
+| Program retrieves best matches to user search query.    | Zelda    | Results for "Zelda" <ol><li>The Legend of Zelda</li><li>Zelda II: The Adventure of Link</li><li>The Legend Of Zelda: The Wind Waker</li></ol>|
 
 ## Setup/Installation Requirements
 

@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.gameSearchButton) Button mGameSearchButton;
     @Bind(R.id.gameSearchEditText) EditText mGameSearchEditText;
     @Bind(R.id.gameBrowseButton) Button mGameBrowseButton;
+    @Bind(R.id.platformBrowseButton) Button mPlatformBrowseButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mGameSearchButton.setOnClickListener(this);
         mGameBrowseButton.setOnClickListener(this);
+        mPlatformBrowseButton.setOnClickListener(this);
     }
 
     @Override
@@ -36,8 +38,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
         if (v == mGameBrowseButton) {
-            String game = mGameSearchEditText.getText().toString();
             Intent intent = new Intent(MainActivity.this, GameBrowseActivity.class);
+            startActivity(intent);
+        }
+        if (v == mPlatformBrowseButton) {
+            Intent intent = new Intent(MainActivity.this, PlatformBrowseActivity.class);
             startActivity(intent);
         }
     }

@@ -61,7 +61,10 @@ public class GiantBombService {
                     String name = gameJSON.getString("name");
                     String imageUrl = gameJSON.getJSONObject("image").getString("thumb_url");
                     String releaseDate = gameJSON.getString("original_release_date");
-                    Game game = new Game(name, imageUrl, releaseDate);
+                    String siteDetailUrl = gameJSON.getString("site_detail_url");
+                    String deck = gameJSON.getString("deck");
+                    int id = gameJSON.getInt("id");
+                    Game game = new Game(name, imageUrl, releaseDate, siteDetailUrl, deck, id);
                     games.add(game);
                 }
             }

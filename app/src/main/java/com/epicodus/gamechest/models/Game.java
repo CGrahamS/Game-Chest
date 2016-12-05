@@ -1,5 +1,7 @@
 package com.epicodus.gamechest.models;
 
+import java.util.ArrayList;
+
 /**
  * Created by CGrahamS on 12/4/16.
  */
@@ -7,13 +9,13 @@ public class Game {
     private String mName;
     private String mImage;
     private String mReleaseDate;
-    private String mPlatforms;
+    private ArrayList<String> mPlatforms;
     private String mContentRating;
     private String mSiteDetailUrl;
     private String mDeck;
     private int mId;
 
-    public Game(String name, String image, String releaseDate, String platforms, String contentRating, String siteDetailUrl, String deck, int id) {
+    public Game(String name, String image, String releaseDate, ArrayList<String> platforms, String contentRating, String siteDetailUrl, String deck, int id) {
         this.mName = name;
         this.mImage = image;
         this.mReleaseDate = releaseDate;
@@ -24,11 +26,13 @@ public class Game {
         this.mId = id;
     }
 
-//    Overloaded constuctor for testing
-    public Game(String name, String image, String releaseDate) {
+    public Game(String name, String image, String releaseDate, String siteDetailUrl, String deck, int id) {
         this.mName = name;
         this.mImage = image;
         this.mReleaseDate = releaseDate;
+        this.mSiteDetailUrl = siteDetailUrl;
+        this.mDeck = deck;
+        this.mId = id;
     }
 
     public String getName() {
@@ -43,7 +47,7 @@ public class Game {
         return mReleaseDate;
     }
 
-    public String getPlatforms() {
+    public ArrayList<String> getPlatforms() {
         return mPlatforms;
     }
 

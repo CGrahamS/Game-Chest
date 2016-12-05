@@ -47,7 +47,6 @@ public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.GameVi
 
     public class GameViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.gameNameTextView) TextView mGameNameTextView;
-        @Bind(R.id.gameImageView) ImageView mGameImageView;
         @Bind(R.id.gameReleaseDateTextView) TextView mGameReleaseDateTextView;
 
         private Context mContext;

@@ -32,19 +32,6 @@
             android:text="Released: 1991-11-21 00:00:00"
             android:id="@+id/gameReleaseDateTextView"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Available on: SNES, WSHP, WiiU, N3DS"
-            android:id="@+id/gamePlatformsTextView"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ESRB rating:E"
-            android:id="@+id/originalGameRating"/>
-
-
     </LinearLayout>
 
 </LinearLayout>

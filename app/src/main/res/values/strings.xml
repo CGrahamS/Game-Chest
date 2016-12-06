@@ -6,4 +6,7 @@
     <string name="game_browse_button">BROWSE GAMES</string>
     <string name="platform_browse_button">BROWSE PLATFORMS</string>
     <string name="sign_in_button">SIGN IN</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

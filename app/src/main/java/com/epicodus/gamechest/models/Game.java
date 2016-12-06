@@ -26,10 +26,11 @@ public class Game {
         this.mId = id;
     }
 
-    public Game(String name, String image, String releaseDate, String siteDetailUrl, String deck, int id) {
+    public Game(String name, String image, String releaseDate, ArrayList<String> platforms,  String siteDetailUrl, String deck, int id) {
         this.mName = name;
         this.mImage = image;
         this.mReleaseDate = releaseDate;
+        this.mPlatforms = platforms;
         this.mSiteDetailUrl = siteDetailUrl;
         this.mDeck = deck;
         this.mId = id;

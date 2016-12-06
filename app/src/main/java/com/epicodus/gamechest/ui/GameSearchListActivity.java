@@ -65,6 +65,7 @@ public class GameSearchListActivity extends AppCompatActivity {
                             Log.d(TAG, "Name: " + game.getName());
                             Log.d(TAG, "Deck: " + game.getDeck());
                             Log.d(TAG, "ID: " + game.getId());
+                            Log.d(TAG, "Platforms: " + game.getPlatforms());
                         }
 
                         mAdapter = new GameListAdapter(getApplicationContext(), mGames);

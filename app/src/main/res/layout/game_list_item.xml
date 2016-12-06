@@ -33,6 +33,12 @@
             android:text="Released: 1991-11-21 00:00:00"
             android:id="@+id/gameReleaseDateTextView"/>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Platforms: SNES"
+            android:id="@+id/gamePlatformsTextView"/>
+
     </LinearLayout>
 
 </LinearLayout>

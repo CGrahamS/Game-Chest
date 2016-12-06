@@ -47,9 +47,12 @@ public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.GameVi
     }
 
     public class GameViewHolder extends RecyclerView.ViewHolder {
+        private static final int MAX_WIDTH = 120;
+        private static final int MAX_HEIGHT = 120;
+        @Bind(R.id.gameImageView) ImageView mGameImageView;
         @Bind(R.id.gameNameTextView) TextView mGameNameTextView;
         @Bind(R.id.gameReleaseDateTextView) TextView mGameReleaseDateTextView;
-        @Bind(R.id.gameImageView) ImageView mGameImageView;
+        @Bind(R.id.gamePlatformsTextView) TextView mGamePlatforms;
 
         private Context mContext;
 
@@ -61,8 +64,13 @@ public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.GameVi
 
         public void bindGame(Game game) {
             mGameNameTextView.setText(game.getName());
-            mGameReleaseDateTextView.setText(game.getReleaseDate());
-            Picasso.with(mContext).load(game.getImage()).into(mGameImageView);
+            mGameReleaseDateTextView.setText("Released: " + game.getReleaseDate());
+            mGamePlatforms.setText("Platforms: " + android.text.TextUtils.join(", ", game.getPlatforms()));
+            Picasso.with(mContext)
+                    .load(game.getImage())
+                    .resize(MAX_WIDTH, MAX_HEIGHT)
+                    .centerInside()
+                    .into(mGameImageView);
         }
 
     }

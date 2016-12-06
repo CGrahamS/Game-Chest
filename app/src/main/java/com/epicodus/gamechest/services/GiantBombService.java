@@ -58,12 +58,18 @@ public class GiantBombService {
                 for (int i = 0; i < gamesJSON.length(); i++) {
                     JSONObject gameJSON = gamesJSON.getJSONObject(i);
                     String name = gameJSON.getString("name");
-                    String imageUrl = gameJSON.getJSONObject("image").getString("thumb_url");
-                    String releaseDate = gameJSON.getString("original_release_date");
+                    String imageUrl = gameJSON.getJSONObject("image").getString("small_url");
+                    String releaseDate = gameJSON.optString("original_release_date", "expected_release_day");
+                    ArrayList<String> platforms = new ArrayList<>();
+                    JSONArray platformsJSON = gameJSON.getJSONArray("platforms");
+                    for (int j = 0; j < platformsJSON.length(); j++) {
+                        String platform = platformsJSON.getJSONObject(j).getString("abbreviation");
+                        platforms.add(platform);
+                    }
                     String siteDetailUrl = gameJSON.getString("site_detail_url");
                     String deck = gameJSON.getString("deck");
                     int id = gameJSON.getInt("id");
-                    Game game = new Game(name, imageUrl, releaseDate, siteDetailUrl, deck, id);
+                    Game game = new Game(name, imageUrl, releaseDate, platforms, siteDetailUrl, deck, id);
                     games.add(game);
                 }
             }

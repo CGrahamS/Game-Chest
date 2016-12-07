@@ -1,6 +1,8 @@
 package com.epicodus.gamechest.ui;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,7 +20,7 @@ import org.parceler.Parcels;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class GameDetailFragment extends Fragment {
+public class GameDetailFragment extends Fragment implements View.OnClickListener {
     @Bind(R.id.gameDetailImageView)
     ImageView mGameDetailImageView;
 
@@ -57,8 +59,7 @@ public class GameDetailFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_game_detail, container, false);
         ButterKnife.bind(this, view);
 
@@ -69,7 +70,18 @@ public class GameDetailFragment extends Fragment {
         mGameDetailRatingTextView.setText("Original Rating: " + mGame.getContentRating());
         mGameDetailPlatformsTextView.setText("Platforms: " + android.text.TextUtils.join(", ", mGame.getPlatforms()));
         mGameDetailDeck.setText(mGame.getDeck());
+        mGameDetailUrl.setOnClickListener(this);
+
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == mGameDetailUrl) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse(mGame.getSiteDetailUrl()));
+            startActivity(webIntent);
+        }
     }
 
 }

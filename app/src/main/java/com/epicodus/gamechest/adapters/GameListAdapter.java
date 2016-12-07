@@ -1,6 +1,7 @@
 package com.epicodus.gamechest.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,10 @@ import android.widget.TextView;
 
 import com.epicodus.gamechest.R;
 import com.epicodus.gamechest.models.Game;
+import com.epicodus.gamechest.ui.GameDetailActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -46,7 +50,7 @@ public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.GameVi
         return mGames.size();
     }
 
-    public class GameViewHolder extends RecyclerView.ViewHolder {
+    public class GameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private static final int MAX_WIDTH = 120;
         private static final int MAX_HEIGHT = 120;
         @Bind(R.id.gameImageView) ImageView mGameImageView;
@@ -60,6 +64,7 @@ public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.GameVi
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
         }
 
         public void bindGame(Game game) {
@@ -71,6 +76,15 @@ public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.GameVi
                     .resize(MAX_WIDTH, MAX_HEIGHT)
                     .centerInside()
                     .into(mGameImageView);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, GameDetailActivity.class);
+            intent.putExtra("position", itemPosition + "");
+            intent.putExtra("games", Parcels.wrap(mGames));
+            mContext.startActivity(intent);
         }
 
     }

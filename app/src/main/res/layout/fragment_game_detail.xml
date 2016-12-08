@@ -49,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:paddingTop="5dp"
+            android:scrollbars="vertical"
             android:text="The third installment in the Zelda series makes a return to the top-down 2D gameplay found in the first game. This time around, Link needs to travel between the light and dark world in order to set things straight in the kingdom of Hyrule."
             android:id="@+id/gameDetailDeck"/>
 

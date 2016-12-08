@@ -2,9 +2,12 @@ package com.epicodus.gamechest.ui;
 
 
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
+import android.net.ParseException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +19,9 @@ import com.epicodus.gamechest.models.Game;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
+
+import java.util.Date;
+import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -70,6 +76,7 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
         mGameDetailRatingTextView.setText("Original Rating: " + mGame.getContentRating());
         mGameDetailPlatformsTextView.setText("Platforms: " + android.text.TextUtils.join(", ", mGame.getPlatforms()));
         mGameDetailDeck.setText(mGame.getDeck());
+        mGameDetailDeck.setMovementMethod(new ScrollingMovementMethod());
         mGameDetailUrl.setOnClickListener(this);
 
         return view;

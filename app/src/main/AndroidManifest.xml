@@ -32,7 +32,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.epicodus.gamechest.ui.MainActivity" />
         </activity>
-        <activity android:name=".ui.GameDetailActivity"></activity>
+        <activity android:name=".ui.GameDetailActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.gamechest.ui.GameSearchListActivity" />
+        </activity>
     </application>
 
 </manifest>

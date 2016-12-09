@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "163586412255",
-    "firebase_url": "https://game-chest.firebaseio.com",
-    "project_id": "game-chest",
-    "storage_bucket": "game-chest.appspot.com"
+    "project_number": "176896876285",
+    "firebase_url": "https://game-chest-dcd50.firebaseio.com",
+    "project_id": "game-chest-dcd50",
+    "storage_bucket": "game-chest-dcd50.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:163586412255:android:02fa36e77e513089",
+        "mobilesdk_app_id": "1:176896876285:android:02fa36e77e513089",
         "android_client_info": {
           "package_name": "com.epicodus.gamechest"
         }
       },
       "oauth_client": [
         {
-          "client_id": "163586412255-tt7bk6iadjfs3sjcn73fvea3ics884un.apps.googleusercontent.com",
+          "client_id": "176896876285-lcf13c7s9p5nd5dovrgu6jlhhgnlngvs.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.epicodus.gamechest",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "163586412255-avv52ehv4d6fh0gf42sce1vgqfrbj5fu.apps.googleusercontent.com",
+          "client_id": "176896876285-l90676hhfki7nu0u3ndv1vhb92ppm2rb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCNK2kLC5Zx0BAM5mOzIm8JnWETO3VHEHs"
+          "current_key": "AIzaSyC1ZcClWhX0Zzsp7adj4eEPUf5JJ2DePrk"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "163586412255-avv52ehv4d6fh0gf42sce1vgqfrbj5fu.apps.googleusercontent.com",
+              "client_id": "176896876285-l90676hhfki7nu0u3ndv1vhb92ppm2rb.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -17,22 +17,11 @@
         android:text="@string/main_header"
         android:id="@+id/mainHeaderTextView"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/mainHeaderTextView"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:hint="@string/game_search_hint"
-        android:singleLine="true"
-        android:imeOptions="actionDone"
-        android:id="@+id/gameSearchEditText"/>
-
     <Button
         style="@style/CustomButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/gameSearchEditText"
+        android:layout_below="@+id/mainHeaderTextView"
         android:text="@string/game_search_button"
         android:id="@+id/gameSearchButton"/>
 

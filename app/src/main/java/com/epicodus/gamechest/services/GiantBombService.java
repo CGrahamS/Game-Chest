@@ -37,6 +37,28 @@ public class GiantBombService {
                 .addQueryParameter("format", "json")
                 .addQueryParameter("query", game)
                 .addQueryParameter("resources", "game");
+        String gameSearchUrl = urlBuilder.build().toString();
+
+        Request request = new Request.Builder()
+                .url(gameSearchUrl)
+                .build();
+
+        Call call = client.newCall(request);
+        call.enqueue(callback);
+    }
+
+    public static void browseGames(String filterField1, String filterValue1, Callback callback) {
+
+        OkHttpClient client = new OkHttpClient.Builder().build();
+
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.GIANT_BOMB_BASE_URL).newBuilder();
+
+        urlBuilder
+                .addPathSegments("games/")
+                .addQueryParameter("api_key", Constants.GIANT_BOMB_API_KEY)
+                .addQueryParameter("format", "json")
+                .addQueryParameter("filter", filterField1 + ":" + filterValue1)
+                .addQueryParameter("resources", "game");
         String url = urlBuilder.build().toString();
 
         Request request = new Request.Builder()

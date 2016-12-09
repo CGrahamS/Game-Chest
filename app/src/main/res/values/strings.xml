@@ -2,7 +2,7 @@
     <string name="app_name">Game Chest</string>
     <string name="main_header">GAME CHEST</string>
     <string name="game_search_hint">Zelda...</string>
-    <string name="game_search_button">SEARCH FOR GAME</string>
+    <string name="game_search_button">SEARCH GAMES</string>
     <string name="game_browse_button">BROWSE GAMES</string>
     <string name="platform_browse_button">BROWSE PLATFORMS</string>
     <string name="sign_in_button">SIGN IN</string>

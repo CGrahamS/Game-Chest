@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.epicodus.gamechest.Constants;
 import com.epicodus.gamechest.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -38,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v == mGameSearchButton) {
             Intent intent = new Intent(MainActivity.this, GameSearchListActivity.class);
             startActivity(intent);
-
         }
         if (v == mGameBrowseButton) {
             Intent intent = new Intent(MainActivity.this, GameBrowseActivity.class);

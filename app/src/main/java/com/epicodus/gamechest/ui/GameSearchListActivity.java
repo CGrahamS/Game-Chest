@@ -20,6 +20,8 @@ import com.epicodus.gamechest.adapters.GameListAdapter;
 import com.epicodus.gamechest.models.Game;
 import com.epicodus.gamechest.services.GiantBombService;
 import com.epicodus.gamechest.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,6 +35,8 @@ import okhttp3.Response;
 
 public class GameSearchListActivity extends AppCompatActivity {
     public static final String TAG = GameSearchListActivity.class.getSimpleName();
+
+    private DatabaseReference mSearchedGameReference;
 
     private SharedPreferences mGameSearchSharedPreference;
     private SharedPreferences.Editor mGameSearchPreferenceEditor;
@@ -49,6 +53,11 @@ public class GameSearchListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_search_list);
         ButterKnife.bind(this);
+
+        mSearchedGameReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_SEARCH_GAME);
 
         mGameSearchSharedPreference = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentGame = mGameSearchSharedPreference.getString(Constants.PREFERENCES_GAME_KEY, null);
@@ -76,6 +85,7 @@ public class GameSearchListActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 addToSharedPreferences(query);
                 getGames(query);
+                saveGameToFirebase(query);
                 mGameSearchTextView.setText("Results for: " + '"' + query + '"');
                 return false;
             }
@@ -87,6 +97,10 @@ public class GameSearchListActivity extends AppCompatActivity {
         });
 
         return true;
+    }
+
+    public void saveGameToFirebase(String game) {
+        mSearchedGameReference.setValue(game);
     }
 
     @Override

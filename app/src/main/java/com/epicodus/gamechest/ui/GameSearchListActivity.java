@@ -40,6 +40,7 @@ public class GameSearchListActivity extends AppCompatActivity {
     public static final String TAG = GameSearchListActivity.class.getSimpleName();
 
     private DatabaseReference mSearchedGameReference;
+    private ValueEventListener mSearchedGameReferenceListener;
 
     private SharedPreferences mGameSearchSharedPreference;
     private SharedPreferences.Editor mGameSearchPreferenceEditor;
@@ -59,12 +60,12 @@ public class GameSearchListActivity extends AppCompatActivity {
                 .getReference()
                 .child(Constants.FIREBASE_CHILD_SEARCH_GAME);
 
-        mSearchedGameReference.addValueEventListener(new ValueEventListener() {
+        mSearchedGameReferenceListener = mSearchedGameReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot gameSnapshot : dataSnapshot.getChildren()) {
                     String game = gameSnapshot.getValue().toString();
-                    Log.d("Games updated", "game" + game);
+                    Log.d("Games updated", "game " + game);
                 }
             }
 
@@ -84,6 +85,12 @@ public class GameSearchListActivity extends AppCompatActivity {
             mGameSearchTextView.setText("Results for: " + '"' + mRecentGame + '"');
             getGames(mRecentGame);
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mSearchedGameReference.removeEventListener(mSearchedGameReferenceListener);
     }
 
     @Override
@@ -119,7 +126,7 @@ public class GameSearchListActivity extends AppCompatActivity {
     }
 
     public void saveGameToFirebase(String game) {
-        mSearchedGameReference.setValue(game);
+        mSearchedGameReference.push().setValue(game);
     }
 
     @Override

@@ -53,15 +53,30 @@
             android:text="The third installment in the Zelda series makes a return to the top-down 2D gameplay found in the first game. This time around, Link needs to travel between the light and dark world in order to set things straight in the kingdom of Hyrule."
             android:id="@+id/gameDetailDeck"/>
 
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="See more on Giant Bomb.com!"
-            android:drawableLeft="@drawable/ic_link_black_24dp"
-            android:drawablePadding="4dp"
-            android:gravity="center_vertical"
-            android:id="@+id/gameDetailUrl"/>
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="See more on Giant Bomb.com!"
+                android:drawableLeft="@drawable/ic_link_black_24dp"
+                android:drawablePadding="4dp"
+                android:gravity="center_vertical"
+                android:id="@+id/gameDetailUrl"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:text="Save"/>
+
+        </RelativeLayout>
+
+
 
     </LinearLayout>
 

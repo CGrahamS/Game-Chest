@@ -11,11 +11,16 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.epicodus.gamechest.Constants;
 import com.epicodus.gamechest.R;
 import com.epicodus.gamechest.models.Game;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -44,6 +49,9 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
 
     @Bind(R.id.gameDetailDeck)
     TextView mGameDetailDeck;
+
+    @Bind(R.id.saveToFavoritesButton)
+    Button mSaveToFavoritesButton;
 
     @Bind(R.id.gameDetailUrl)
     TextView mGameDetailUrl;
@@ -77,7 +85,10 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
         mGameDetailPlatformsTextView.setText("Platforms: " + android.text.TextUtils.join(", ", mGame.getPlatforms()));
         mGameDetailDeck.setText(mGame.getDeck());
         mGameDetailDeck.setMovementMethod(new ScrollingMovementMethod());
+
         mGameDetailUrl.setOnClickListener(this);
+
+        mSaveToFavoritesButton.setOnClickListener(this);
 
         return view;
     }
@@ -88,6 +99,13 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse(mGame.getSiteDetailUrl()));
             startActivity(webIntent);
+        }
+        if (v == mSaveToFavoritesButton) {
+            DatabaseReference gameRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_GAMES);
+            gameRef.push().setValue(mGame);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
 

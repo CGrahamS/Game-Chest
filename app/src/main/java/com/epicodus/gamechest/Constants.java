@@ -10,4 +10,5 @@ public class Constants {
     public static final String GIANT_BOMB_BASE_URL = "http://www.giantbomb.com/api/";
     public static final String PREFERENCES_GAME_KEY = "game";
     public static final String FIREBASE_CHILD_SEARCH_GAME = "searchGame";
+    public static final String FIREBASE_CHILD_GAMES = "games";
 }

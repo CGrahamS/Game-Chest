@@ -20,8 +20,11 @@ import com.epicodus.gamechest.adapters.GameListAdapter;
 import com.epicodus.gamechest.models.Game;
 import com.epicodus.gamechest.services.GiantBombService;
 import com.epicodus.gamechest.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -50,14 +53,30 @@ public class GameSearchListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_search_list);
-        ButterKnife.bind(this);
 
         mSearchedGameReference = FirebaseDatabase
                 .getInstance()
                 .getReference()
                 .child(Constants.FIREBASE_CHILD_SEARCH_GAME);
+
+        mSearchedGameReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot gameSnapshot : dataSnapshot.getChildren()) {
+                    String game = gameSnapshot.getValue().toString();
+                    Log.d("Games updated", "game" + game);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_game_search_list);
+        ButterKnife.bind(this);
 
         mGameSearchSharedPreference = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentGame = mGameSearchSharedPreference.getString(Constants.PREFERENCES_GAME_KEY, null);

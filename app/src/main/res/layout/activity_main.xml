@@ -24,6 +24,8 @@
         android:gravity="center"
         android:textSize="20sp"
         android:hint="@string/game_search_hint"
+        android:singleLine="true"
+        android:imeOptions="actionDone"
         android:id="@+id/gameSearchEditText"/>
 
     <Button

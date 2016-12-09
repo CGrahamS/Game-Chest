@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.epicodus.gamechest.R;
 
@@ -33,9 +34,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mGameSearchButton) {
             String game = mGameSearchEditText.getText().toString();
-            Intent intent = new Intent(MainActivity.this, GameSearchListActivity.class);
-            intent.putExtra("game", game);
-            startActivity(intent);
+            game.trim();
+            if (game == null || game.equals("")) {
+                Toast.makeText(MainActivity.this, "Enter a Game!", Toast.LENGTH_SHORT).show();
+            } else {
+                Intent intent = new Intent(MainActivity.this, GameSearchListActivity.class);
+                intent.putExtra("game", game);
+                startActivity(intent);
+            }
         }
         if (v == mGameBrowseButton) {
             Intent intent = new Intent(MainActivity.this, GameBrowseActivity.class);

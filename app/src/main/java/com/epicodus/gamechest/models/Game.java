@@ -1,10 +1,13 @@
 package com.epicodus.gamechest.models;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
 /**
  * Created by CGrahamS on 12/4/16.
  */
+@Parcel
 public class Game {
     private String mName;
     private String mImage;
@@ -14,6 +17,8 @@ public class Game {
     private String mSiteDetailUrl;
     private String mDeck;
     private int mId;
+
+    public Game() {}
 
     public Game(String name, String image, String releaseDate, ArrayList<String> platforms, String contentRating, String siteDetailUrl, String deck, int id) {
         this.mName = name;

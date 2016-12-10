@@ -20,6 +20,11 @@ import com.epicodus.gamechest.adapters.GameListAdapter;
 import com.epicodus.gamechest.models.Game;
 import com.epicodus.gamechest.services.GiantBombService;
 import com.epicodus.gamechest.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,6 +35,8 @@ import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+
+//FIXME add click listener so that clicking a list item takes you to that list item in the pager adapter
 
 public class GameSearchListActivity extends AppCompatActivity {
     public static final String TAG = GameSearchListActivity.class.getSimpleName();
@@ -46,6 +53,7 @@ public class GameSearchListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_search_list);
         ButterKnife.bind(this);

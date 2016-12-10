@@ -72,6 +72,8 @@ public class GiantBombService {
 
     public ArrayList<Game> processResults(Response response) {
         ArrayList<Game> games = new ArrayList<>();
+        String gameRating = new String();
+        String releaseDate = new String();
 
         try {
             String jsonData = response.body().string();
@@ -79,11 +81,13 @@ public class GiantBombService {
                 JSONObject giantBombJSON = new JSONObject(jsonData);
                 JSONArray gamesJSON = giantBombJSON.getJSONArray("results");
                 for (int i = 0; i < gamesJSON.length(); i++) {
-                    String gameRating = new String();
                     JSONObject gameJSON = gamesJSON.getJSONObject(i);
                     String name = gameJSON.getString("name");
                     String imageUrl = gameJSON.getJSONObject("image").getString("small_url");
-                    String releaseDate = gameJSON.optString("original_release_date", "expected_release_day");
+                    releaseDate = gameJSON.optString("original_release_date", "expected_release_day");
+                    if (releaseDate == "null") {
+                        releaseDate = "N/A";
+                    }
                     ArrayList<String> platforms = new ArrayList<>();
                     JSONArray platformsJSON = gameJSON.getJSONArray("platforms");
                     for (int j = 0; j < platformsJSON.length(); j++) {

@@ -37,7 +37,8 @@ public class GiantBombService {
                 .addQueryParameter("api_key", Constants.GIANT_BOMB_API_KEY)
                 .addQueryParameter("format", "json")
                 .addQueryParameter("query", game)
-                .addQueryParameter("resources", "game");
+                .addQueryParameter("resources", "game")
+                .addQueryParameter("field_list", "name,image,original_release_date,platforms,original_game_rating,site_detail_url,deck,id,");
         String gameSearchUrl = urlBuilder.build().toString();
 
         Request request = new Request.Builder()
@@ -85,6 +86,7 @@ public class GiantBombService {
                     String name = gameJSON.getString("name");
                     String imageUrl = gameJSON.getJSONObject("image").getString("small_url");
                     releaseDate = gameJSON.optString("original_release_date", "expected_release_day");
+                    //FIXME should I make a function to check date? I tried but was having difficulties with scope
                     if (releaseDate == "null") {
                         releaseDate = "N/A";
                     }
@@ -95,6 +97,7 @@ public class GiantBombService {
                         platforms.add(platform);
                     }
                     JSONArray ratingsJSON = gameJSON.optJSONArray("original_game_rating");
+                    //FIXME same question as above
                     if (ratingsJSON != null) {
                         gameRating = ratingsJSON.getJSONObject(0).optString("name", "N/A");
                     } else {

@@ -104,7 +104,7 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
             DatabaseReference gameRef = FirebaseDatabase
                     .getInstance()
                     .getReference(Constants.FIREBASE_CHILD_GAMES);
-            gameRef.push().setValue(mGame);
+            gameRef.child(mGame.getName()).setValue(mGame);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }

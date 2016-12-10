@@ -85,7 +85,7 @@ public class GiantBombService {
                     JSONObject gameJSON = gamesJSON.getJSONObject(i);
                     String name = gameJSON.getString("name");
                     String imageUrl = gameJSON.getJSONObject("image").getString("small_url");
-                    releaseDate = gameJSON.optString("original_release_date", "expected_release_day");
+                    releaseDate = gameJSON.getString("original_release_date");
                     //FIXME should I make a function to check date? I tried but was having difficulties with scope
                     if (releaseDate == "null") {
                         releaseDate = "N/A";

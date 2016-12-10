@@ -79,6 +79,7 @@ public class GiantBombService {
                 JSONObject giantBombJSON = new JSONObject(jsonData);
                 JSONArray gamesJSON = giantBombJSON.getJSONArray("results");
                 for (int i = 0; i < gamesJSON.length(); i++) {
+                    String gameRating = new String();
                     JSONObject gameJSON = gamesJSON.getJSONObject(i);
                     String name = gameJSON.getString("name");
                     String imageUrl = gameJSON.getJSONObject("image").getString("small_url");
@@ -89,8 +90,12 @@ public class GiantBombService {
                         String platform = platformsJSON.getJSONObject(j).getString("abbreviation");
                         platforms.add(platform);
                     }
-                    JSONArray ratingsJSON = gameJSON.getJSONArray("original_game_rating");
-                    String gameRating = ratingsJSON.getJSONObject(0).optString("name", "N/A");
+                    JSONArray ratingsJSON = gameJSON.optJSONArray("original_game_rating");
+                    if (ratingsJSON != null) {
+                        gameRating = ratingsJSON.getJSONObject(0).optString("name", "N/A");
+                    } else {
+                        gameRating = "N/A";
+                    }
                     String siteDetailUrl = gameJSON.getString("site_detail_url");
                     String deck = gameJSON.optString("deck", "Not Provided");
                     int id = gameJSON.getInt("id");

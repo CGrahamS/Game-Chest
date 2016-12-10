@@ -36,11 +36,10 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+//FIXME add click listener so that clicking a list item takes you to that list item in the pager adapter
+
 public class GameSearchListActivity extends AppCompatActivity {
     public static final String TAG = GameSearchListActivity.class.getSimpleName();
-
-    private DatabaseReference mSearchedGameReference;
-    private ValueEventListener mSearchedGameReferenceListener;
 
     private SharedPreferences mGameSearchSharedPreference;
     private SharedPreferences.Editor mGameSearchPreferenceEditor;
@@ -55,26 +54,6 @@ public class GameSearchListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        mSearchedGameReference = FirebaseDatabase
-                .getInstance()
-                .getReference()
-                .child(Constants.FIREBASE_CHILD_SEARCH_GAME);
-
-        mSearchedGameReferenceListener = mSearchedGameReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot gameSnapshot : dataSnapshot.getChildren()) {
-                    String game = gameSnapshot.getValue().toString();
-                    Log.d("Games updated", "game " + game);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_search_list);
         ButterKnife.bind(this);
@@ -85,12 +64,6 @@ public class GameSearchListActivity extends AppCompatActivity {
             mGameSearchTextView.setText("Results for: " + '"' + mRecentGame + '"');
             getGames(mRecentGame);
         }
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mSearchedGameReference.removeEventListener(mSearchedGameReferenceListener);
     }
 
     @Override
@@ -111,7 +84,6 @@ public class GameSearchListActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 addToSharedPreferences(query);
                 getGames(query);
-                saveGameToFirebase(query);
                 mGameSearchTextView.setText("Results for: " + '"' + query + '"');
                 return false;
             }
@@ -123,10 +95,6 @@ public class GameSearchListActivity extends AppCompatActivity {
         });
 
         return true;
-    }
-
-    public void saveGameToFirebase(String game) {
-        mSearchedGameReference.push().setValue(game);
     }
 
     @Override

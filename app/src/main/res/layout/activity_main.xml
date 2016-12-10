@@ -26,8 +26,9 @@
         android:id="@+id/gameSearchButton"/>
 
     <!--
-    I had to place this about the linear layout so it could reference the sign_in_button
+    I had to place this above the linear layout so it could reference the sign_in_button
     -->
+
     <Button
         style="@style/CustomButton"
         android:layout_width="match_parent"
@@ -36,7 +37,15 @@
         android:text="@string/sign_in_button"
         android:id="@+id/signInButton"/>
 
-    <LinearLayout
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Favorited Games"
+        android:visibility="visible"
+        android:layout_above="@id/signInButton"
+        android:id="@+id/favoritedGamesButton"/>
+
+        <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -20,9 +20,17 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @Bind(R.id.gameSearchButton) Button mGameSearchButton;
-    @Bind(R.id.gameBrowseButton) Button mGameBrowseButton;
-    @Bind(R.id.platformBrowseButton) Button mPlatformBrowseButton;
+    @Bind(R.id.gameSearchButton)
+    Button mGameSearchButton;
+
+    @Bind(R.id.gameBrowseButton)
+    Button mGameBrowseButton;
+
+    @Bind(R.id.platformBrowseButton)
+    Button mPlatformBrowseButton;
+
+    @Bind(R.id.favoritedGamesButton)
+    Button mFavoritedGamesButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mGameSearchButton.setOnClickListener(this);
         mGameBrowseButton.setOnClickListener(this);
         mPlatformBrowseButton.setOnClickListener(this);
+        mFavoritedGamesButton.setOnClickListener(this);
     }
 
     @Override
@@ -48,6 +57,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (v == mPlatformBrowseButton) {
             Intent intent = new Intent(MainActivity.this, PlatformBrowseActivity.class);
+            startActivity(intent);
+        }
+        if (v == mFavoritedGamesButton) {
+            Intent intent = new Intent(MainActivity.this, SavedGameListActivity.class);
             startActivity(intent);
         }
     }

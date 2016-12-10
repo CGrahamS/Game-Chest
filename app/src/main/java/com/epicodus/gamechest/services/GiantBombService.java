@@ -89,10 +89,12 @@ public class GiantBombService {
                         String platform = platformsJSON.getJSONObject(j).getString("abbreviation");
                         platforms.add(platform);
                     }
+                    JSONArray ratingsJSON = gameJSON.getJSONArray("original_game_rating");
+                    String gameRating = ratingsJSON.getJSONObject(0).optString("name", "N/A");
                     String siteDetailUrl = gameJSON.getString("site_detail_url");
-                    String deck = gameJSON.getString("deck");
+                    String deck = gameJSON.optString("deck", "Not Provided");
                     int id = gameJSON.getInt("id");
-                    Game game = new Game(name, imageUrl, releaseDate, platforms, siteDetailUrl, deck, id);
+                    Game game = new Game(name, imageUrl, releaseDate, platforms, gameRating, siteDetailUrl, deck, id);
                     games.add(game);
                 }
             }

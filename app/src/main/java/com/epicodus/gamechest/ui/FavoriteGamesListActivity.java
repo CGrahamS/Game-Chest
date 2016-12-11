@@ -11,6 +11,8 @@ import com.epicodus.gamechest.R;
 import com.epicodus.gamechest.adapters.FirebaseGameViewHolder;
 import com.epicodus.gamechest.models.Game;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,12 +32,19 @@ public class FavoriteGamesListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_game_search_list);
         ButterKnife.bind(this);
 
         mGameListTextView.setText("Favorite Games");
-        mGameReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_GAMES);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+        mGameReference = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_USERS)
+                .child(uid);
+
         setUpFirebaseAdapter();
     }
 

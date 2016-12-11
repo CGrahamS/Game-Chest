@@ -18,6 +18,7 @@ public class Game {
     private String siteDetailUrl;
     private String deck;
     private int id;
+    private String pushId;
 
     public Game() {}
 
@@ -72,6 +73,14 @@ public class Game {
 
     public int getId() {
         return id;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 
 }

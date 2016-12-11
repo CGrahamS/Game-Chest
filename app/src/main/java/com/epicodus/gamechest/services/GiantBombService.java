@@ -92,7 +92,7 @@ public class GiantBombService {
                     String unformattedReleaseDate = gameJSON.getString("original_release_date");
                     //FIXME should I make a function to check date? I tried but was having difficulties with scope
                     if (unformattedReleaseDate == "null") {
-                        unformattedReleaseDate = "N/A";
+                        formattedReleaseDate = "N/A";
                     } else {
                         try {
                             formattedReleaseDate = customFormat.format(apiFormat.parse(unformattedReleaseDate));

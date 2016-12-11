@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MainActivity.this, PlatformBrowseActivity.class);
             startActivity(intent);
         }
+//        FIXME breaks if clicked without signing in
         if (v == mFavoritedGamesButton) {
             Intent intent = new Intent(MainActivity.this, FavoriteGamesListActivity.class);
             startActivity(intent);

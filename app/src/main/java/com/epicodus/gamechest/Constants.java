@@ -7,5 +7,5 @@ public class Constants {
     public static final String GIANT_BOMB_API_KEY = BuildConfig.GIANT_BOMB_API_KEY;
     public static final String GIANT_BOMB_BASE_URL = "http://www.giantbomb.com/api/";
     public static final String PREFERENCES_GAME_KEY = "game";
-    public static final String FIREBASE_CHILD_GAMES = "games";
+    public static final String FIREBASE_CHILD_USERS = "users";
 }

@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -104,8 +105,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void loginWithPassword() {
         String email = mEmailEditText.getText().toString().trim();
         String password = mPasswordEditText.getText().toString().trim();
-        if (email.equals("")) {
-            mEmailEditText.setError("Please enter your email");
+        if (email.equals("") || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            mEmailEditText.setError("Please enter a valid email");
             return;
         }
         if (password.equals("") || password.length() < 6) {

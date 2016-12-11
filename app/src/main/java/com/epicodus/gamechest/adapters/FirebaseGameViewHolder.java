@@ -54,7 +54,7 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements V
     @Override
     public void onClick(View v) {
         final ArrayList<Game> games = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_GAMES);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_USERS);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override

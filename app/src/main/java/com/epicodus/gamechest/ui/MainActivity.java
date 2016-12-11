@@ -1,8 +1,10 @@
 package com.epicodus.gamechest.ui;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -11,6 +13,7 @@ import android.widget.Button;
 
 import com.epicodus.gamechest.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,6 +35,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.signInButton)
     Button mSignInButton;
 
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -39,11 +45,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    if (user.getDisplayName() == null ) {
+                        getSupportActionBar().setTitle("Welcome to Game Chest!");
+                    } else {
+                        getSupportActionBar().setTitle("Welcome " + user.getDisplayName() + "!");
+                    }
+                }
+            }
+        };
+
         mGameSearchButton.setOnClickListener(this);
         mGameBrowseButton.setOnClickListener(this);
         mPlatformBrowseButton.setOnClickListener(this);
         mFavoritedGamesButton.setOnClickListener(this);
         mSignInButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mAuth.removeAuthStateListener(mAuthListener);
     }
 
     @Override

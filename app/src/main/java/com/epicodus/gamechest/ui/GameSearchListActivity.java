@@ -36,8 +36,6 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-//FIXME add click listener so that clicking a list item takes you to that list item in the pager adapter
-
 public class GameSearchListActivity extends AppCompatActivity {
     public static final String TAG = GameSearchListActivity.class.getSimpleName();
 

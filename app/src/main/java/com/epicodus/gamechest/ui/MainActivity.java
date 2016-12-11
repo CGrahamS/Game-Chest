@@ -10,6 +10,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.gamechest.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -19,6 +21,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    @Bind(R.id.mainHeaderTextView)
+    TextView mMainHeaderTextView;
 
     @Bind(R.id.gameSearchButton)
     Button mGameSearchButton;
@@ -37,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,17 +51,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        getSupportActionBar().setTitle("Welcome to Game Chest!");
+
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+                user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    if (user.getDisplayName() == null ) {
-                        getSupportActionBar().setTitle("Welcome to Game Chest!");
-                    } else {
-                        getSupportActionBar().setTitle("Welcome " + user.getDisplayName() + "!");
-                    }
+                    getSupportActionBar().setTitle("Welcome " + user.getDisplayName() + "!");
                 }
             }
         };
@@ -123,5 +127,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //TODO potential source of bugs (does not navigate user to another activity)
     private void logout() {
         FirebaseAuth.getInstance().signOut();
+        getSupportActionBar().setTitle("Welcome to Game Chest!");
+        Toast.makeText(MainActivity.this, "Goodbye, " + user.getDisplayName() + "!",
+                Toast.LENGTH_SHORT).show();
     }
 }

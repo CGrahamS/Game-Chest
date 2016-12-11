@@ -37,9 +37,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.favoritedGamesButton)
     Button mFavoritedGamesButton;
 
-    @Bind(R.id.signInButton)
-    Button mSignInButton;
-
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseUser user;
@@ -71,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mGameBrowseButton.setOnClickListener(this);
         mPlatformBrowseButton.setOnClickListener(this);
         mFavoritedGamesButton.setOnClickListener(this);
-        mSignInButton.setOnClickListener(this);
     }
 
     @Override
@@ -139,10 +135,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        FIXME breaks if clicked without signing in
         if (v == mFavoritedGamesButton) {
             Intent intent = new Intent(MainActivity.this, FavoriteGamesListActivity.class);
-            startActivity(intent);
-        }
-        if (v == mSignInButton) {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
         }
     }

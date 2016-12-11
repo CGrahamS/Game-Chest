@@ -25,48 +25,28 @@
         android:text="@string/game_search_button"
         android:id="@+id/gameSearchButton"/>
 
-    <!--
-    I had to place this above the linear layout so it could reference the sign_in_button
-    -->
+    <Button
+        style="@style/CustomButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameSearchButton"
+        android:text="@string/game_browse_button"
+        android:id="@+id/gameBrowseButton"/>
 
     <Button
         style="@style/CustomButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="@string/sign_in_button"
-        android:id="@+id/signInButton"/>
+        android:layout_below="@+id/gameBrowseButton"
+        android:text="@string/platform_browse_button"
+        android:id="@+id/platformBrowseButton"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Favorited Games"
         android:visibility="gone"
-        android:layout_above="@id/signInButton"
+        android:layout_alignParentBottom="true"
         android:id="@+id/favoritedGamesButton"/>
-
-        <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/gameSearchButton"
-        android:layout_above="@id/signInButton"
-        android:gravity="center_vertical">
-
-        <Button
-            style="@style/CustomButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/game_browse_button"
-            android:id="@+id/gameBrowseButton"/>
-
-        <Button
-            style="@style/CustomButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/platform_browse_button"
-            android:id="@+id/platformBrowseButton"/>
-
-    </LinearLayout>
 
 </RelativeLayout>

@@ -10,6 +10,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,7 +76,9 @@ public class GiantBombService {
     public ArrayList<Game> processResults(Response response) {
         ArrayList<Game> games = new ArrayList<>();
         String gameRating = new String();
-        String releaseDate = new String();
+        String formattedReleaseDate = new String();
+        SimpleDateFormat apiFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat customFormat = new SimpleDateFormat("M/dd/yyyy");
 
         try {
             String jsonData = response.body().string();
@@ -85,10 +89,16 @@ public class GiantBombService {
                     JSONObject gameJSON = gamesJSON.getJSONObject(i);
                     String name = gameJSON.getString("name");
                     String imageUrl = gameJSON.getJSONObject("image").getString("small_url");
-                    releaseDate = gameJSON.getString("original_release_date");
+                    String unformattedReleaseDate = gameJSON.getString("original_release_date");
                     //FIXME should I make a function to check date? I tried but was having difficulties with scope
-                    if (releaseDate == "null") {
-                        releaseDate = "N/A";
+                    if (unformattedReleaseDate == "null") {
+                        unformattedReleaseDate = "N/A";
+                    } else {
+                        try {
+                            formattedReleaseDate = customFormat.format(apiFormat.parse(unformattedReleaseDate));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
                     }
                     ArrayList<String> platforms = new ArrayList<>();
                     JSONArray platformsJSON = gameJSON.getJSONArray("platforms");
@@ -106,7 +116,7 @@ public class GiantBombService {
                     String siteDetailUrl = gameJSON.getString("site_detail_url");
                     String deck = gameJSON.optString("deck", "Not Provided");
                     int id = gameJSON.getInt("id");
-                    Game game = new Game(name, imageUrl, releaseDate, platforms, gameRating, siteDetailUrl, deck, id);
+                    Game game = new Game(name, imageUrl, formattedReleaseDate, platforms, gameRating, siteDetailUrl, deck, id);
                     games.add(game);
                 }
             }

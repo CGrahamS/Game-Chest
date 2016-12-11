@@ -104,18 +104,23 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
         }
         if (v == mSaveToFavoritesButton) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            String uid =user.getUid();
-            DatabaseReference gameRef = FirebaseDatabase
-                    .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_USERS)
-                    .child(uid);
+            if (user != null) {
+                String uid = user.getUid();
+                DatabaseReference gameRef = FirebaseDatabase
+                        .getInstance()
+                        .getReference(Constants.FIREBASE_CHILD_USERS)
+                        .child(uid);
 
-            DatabaseReference pushRef = gameRef.push();
-            String pushId = pushRef.getKey();
-            mGame.setPushId(pushId);
-            pushRef.setValue(mGame);
+                DatabaseReference pushRef = gameRef.push();
+                String pushId = pushRef.getKey();
+                mGame.setPushId(pushId);
+                pushRef.setValue(mGame);
 
-            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getContext(), "You need an account to favorite items!", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 

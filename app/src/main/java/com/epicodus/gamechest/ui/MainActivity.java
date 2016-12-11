@@ -31,9 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.gameBrowseButton)
     Button mGameBrowseButton;
 
-    @Bind(R.id.platformBrowseButton)
-    Button mPlatformBrowseButton;
-
     @Bind(R.id.favoritedGamesButton)
     Button mFavoritedGamesButton;
 
@@ -66,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mGameSearchButton.setOnClickListener(this);
         mGameBrowseButton.setOnClickListener(this);
-        mPlatformBrowseButton.setOnClickListener(this);
         mFavoritedGamesButton.setOnClickListener(this);
     }
 
@@ -128,11 +124,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MainActivity.this, GameBrowseActivity.class);
             startActivity(intent);
         }
-        if (v == mPlatformBrowseButton) {
-            Intent intent = new Intent(MainActivity.this, PlatformBrowseActivity.class);
-            startActivity(intent);
-        }
-//        FIXME breaks if clicked without signing in
         if (v == mFavoritedGamesButton) {
             Intent intent = new Intent(MainActivity.this, FavoriteGamesListActivity.class);
             startActivity(intent);

@@ -42,6 +42,8 @@ public class GameSearchListActivity extends AppCompatActivity {
     private SharedPreferences mGameSearchSharedPreference;
     private SharedPreferences.Editor mGameSearchPreferenceEditor;
     private String mRecentGame;
+    private GameListAdapter mAdapter;
+    public ArrayList<Game> mGames = new ArrayList<>();
 
 
     @Bind(R.id.gameListTextView)
@@ -49,10 +51,6 @@ public class GameSearchListActivity extends AppCompatActivity {
 
     @Bind(R.id.gameRecyclerView)
     RecyclerView mGameRecyclerView;
-
-
-    private GameListAdapter mAdapter;
-    public ArrayList<Game> mGames = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

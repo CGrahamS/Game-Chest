@@ -17,29 +17,28 @@
         android:text="@string/main_header"
         android:id="@+id/mainHeaderTextView"/>
 
-    <Button
-        style="@style/CustomButton"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/mainHeaderTextView"
-        android:text="@string/game_search_button"
-        android:id="@+id/gameSearchButton"/>
+        android:gravity="center_vertical"
+        android:layout_height="match_parent">
 
-    <Button
-        style="@style/CustomButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/gameSearchButton"
-        android:text="@string/game_browse_button"
-        android:id="@+id/gameBrowseButton"/>
+        <Button
+            style="@style/CustomButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/game_search_button"
+            android:id="@+id/gameSearchButton"/>
 
-    <Button
-        style="@style/CustomButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/gameBrowseButton"
-        android:text="@string/platform_browse_button"
-        android:id="@+id/platformBrowseButton"/>
+        <Button
+            style="@style/CustomButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/game_browse_button"
+            android:id="@+id/gameBrowseButton"/>
+
+
+    </LinearLayout>
 
     <Button
         android:layout_width="match_parent"

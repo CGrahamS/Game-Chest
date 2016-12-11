@@ -14,13 +14,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="16dp"
-        android:text="User Game Search"
-        android:id="@+id/gameSearchTextView"/>
+        android:id="@+id/gameListTextView"/>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/gameSearchTextView"
+        android:layout_below="@id/gameListTextView"
         android:id="@+id/gameRecyclerView"/>
 
 </RelativeLayout>

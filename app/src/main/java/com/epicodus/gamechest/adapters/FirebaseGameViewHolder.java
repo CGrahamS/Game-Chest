@@ -27,9 +27,6 @@ import java.util.List;
  * Created by CGrahamS on 12/9/16.
  */
 public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    private static final int MAX_WIDTH = 200;
-    private static final int MAX_HEIGHT = 200;
-
     View mView;
     Context mContext;
 
@@ -43,18 +40,15 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements V
     public void bindGame(Game game) {
         ImageView gameImageView = (ImageView) mView.findViewById(R.id.gameImageView);
         TextView gameNameTextView = (TextView) mView.findViewById(R.id.gameNameTextView);
-//        TextView gameContentRatingTextView = (TextView) mView.findViewById(R.id.gameDetailRatingTextView);
         TextView gamePlatformsTextView = (TextView) mView.findViewById(R.id.gamePlatformsTextView);
-//        TextView gameDeckTextView = (TextView) mView.findViewById(R.id.gameDetailDeck);
 
         Picasso.with(mContext)
                 .load(game.getImage())
                 .into(gameImageView);
 
+
         gameNameTextView.setText(game.getName());
-//        gameContentRatingTextView.setText(game.getContentRating());
         gamePlatformsTextView.setText("Platforms: " + android.text.TextUtils.join(", ", game.getPlatforms()));
-//        gameDeckTextView.setText(game.getDeck());
     }
 
     @Override

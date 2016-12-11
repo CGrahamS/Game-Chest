@@ -46,8 +46,13 @@ public class GameSearchListActivity extends AppCompatActivity {
     private String mRecentGame;
 
 
-    @Bind(R.id.gameSearchTextView) TextView mGameSearchTextView;
-    @Bind(R.id.gameRecyclerView) RecyclerView mGameRecyclerView;
+    @Bind(R.id.gameListTextView)
+    TextView mGameListTextView;
+
+    @Bind(R.id.gameRecyclerView)
+    RecyclerView mGameRecyclerView;
+
+
     private GameListAdapter mAdapter;
     public ArrayList<Game> mGames = new ArrayList<>();
 
@@ -61,8 +66,10 @@ public class GameSearchListActivity extends AppCompatActivity {
         mGameSearchSharedPreference = PreferenceManager.getDefaultSharedPreferences(this);
         mRecentGame = mGameSearchSharedPreference.getString(Constants.PREFERENCES_GAME_KEY, null);
         if (mRecentGame != null) {
-            mGameSearchTextView.setText("Results for: " + '"' + mRecentGame + '"');
+            mGameListTextView.setText("Results for: " + '"' + mRecentGame + '"');
             getGames(mRecentGame);
+        } else {
+            mGameListTextView.setText("Search for a Game!");
         }
     }
 
@@ -84,7 +91,7 @@ public class GameSearchListActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 addToSharedPreferences(query);
                 getGames(query);
-                mGameSearchTextView.setText("Results for: " + '"' + query + '"');
+                mGameListTextView.setText("Results for: " + '"' + query + '"');
                 return false;
             }
 

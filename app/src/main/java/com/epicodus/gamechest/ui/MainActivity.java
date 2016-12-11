@@ -60,6 +60,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     getSupportActionBar().setTitle("Welcome " + user.getDisplayName() + "!");
+                    mFavoritedGamesButton.setVisibility(View.VISIBLE);
+                } else {
+                    mFavoritedGamesButton.setVisibility(View.GONE);
                 }
             }
         };
@@ -91,11 +94,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem logoutItem = menu.findItem(R.id.action_logout);
+        MenuItem loginItem = menu.findItem(R.id.action_login);
+
+        if (user != null) {
+            logoutItem.setVisible(true);
+            loginItem.setVisible(false);
+        } else {
+            logoutItem.setVisible(false);
+            loginItem.setVisible(true);
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_logout) {
             logout();
             return true;
+        }
+        if (id == R.id.action_login) {
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

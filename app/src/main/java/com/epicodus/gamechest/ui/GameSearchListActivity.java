@@ -1,5 +1,6 @@
 package com.epicodus.gamechest.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -44,6 +45,8 @@ public class GameSearchListActivity extends AppCompatActivity {
     private String mRecentGame;
     private GameListAdapter mAdapter;
     public ArrayList<Game> mGames = new ArrayList<>();
+    private ProgressDialog mSearchProgressDialog;
+
 
 
     @Bind(R.id.gameListTextView)
@@ -63,8 +66,10 @@ public class GameSearchListActivity extends AppCompatActivity {
         mRecentGame = mGameSearchSharedPreference.getString(Constants.PREFERENCES_GAME_KEY, null);
         if (mRecentGame != null) {
             mGameListTextView.setText("Results for: " + '"' + mRecentGame + '"');
+            createSearchProgressDialog();
             getGames(mRecentGame);
         } else {
+            createSearchProgressDialog();
             mGameListTextView.setText("Search for a Game!");
         }
     }
@@ -106,16 +111,29 @@ public class GameSearchListActivity extends AppCompatActivity {
     }
 
     private void getGames(String game) {
+        mSearchProgressDialog.show();
         final GiantBombService giantBombService = new GiantBombService();
         giantBombService.searchForGame(game, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                mSearchProgressDialog.dismiss();
                 e.printStackTrace();
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 mGames = giantBombService.processResults(response);
+
+                if (mGames.size() == 0) {
+
+                    GameSearchListActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mGameListTextView.setText("Sorry! \n We can't find that game.");
+                        }
+                    });
+                    mSearchProgressDialog.dismiss();
+                }
 
                 GameSearchListActivity.this.runOnUiThread(new Runnable() {
 
@@ -129,11 +147,19 @@ public class GameSearchListActivity extends AppCompatActivity {
                         mGameRecyclerView.setHasFixedSize(true);
                     }
                 });
+                mSearchProgressDialog.dismiss();
             }
         });
     }
 
     private void addToSharedPreferences(String game) {
         mGameSearchPreferenceEditor.putString(Constants.PREFERENCES_GAME_KEY, game).apply();
+    }
+
+    private void createSearchProgressDialog() {
+        mSearchProgressDialog = new ProgressDialog(this);
+        mSearchProgressDialog.setTitle("Loading...");
+        mSearchProgressDialog.setMessage("Searching for game...");
+        mSearchProgressDialog.setCancelable(false);
     }
 }

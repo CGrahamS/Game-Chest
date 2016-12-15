@@ -34,6 +34,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class GameDetailFragment extends Fragment implements View.OnClickListener {
+    public static final int MAX_HEIGHT = 150;
+    public static final int MAX_WIDTH = 150;
+
     @Bind(R.id.gameDetailImageView)
     ImageView mGameDetailImageView;
 

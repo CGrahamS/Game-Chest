@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.epicodus.gamechest.Constants;
@@ -29,6 +30,7 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements V
     public static final String TAG = FirebaseGameViewHolder.class.getSimpleName();
     View mView;
     Context mContext;
+    public LinearLayout mGameDetailsLayout;
 
     public FirebaseGameViewHolder(View itemView) {
         super(itemView);
@@ -42,6 +44,7 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements V
         TextView gameNameTextView = (TextView) mView.findViewById(R.id.gameNameTextView);
         TextView gameReleaseDateTextView = (TextView) mView.findViewById(R.id.gameReleaseDateTextView);
         TextView gamePlatformsTextView = (TextView) mView.findViewById(R.id.gamePlatformsTextView);
+        mGameDetailsLayout = (LinearLayout) mView.findViewById(R.id.gameDetailsLayout);
 
         Picasso.with(mContext)
                 .load(game.getImage())

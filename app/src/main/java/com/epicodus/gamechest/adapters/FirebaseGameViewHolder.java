@@ -1,5 +1,7 @@
 package com.epicodus.gamechest.adapters;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -58,12 +60,18 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements I
 
     @Override
     public void onItemSelected() {
-        Log.d(TAG, "onItemSelected: Animation");
+        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
+                R.animator.drag_scale_on);
+        set.setTarget(itemView);
+        set.start();
     }
 
     @Override
     public void onItemClear() {
-        Log.d(TAG, "onItemClear: Animation");
+        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(mContext,
+                R.animator.drag_scale_off);
+        set.setTarget(itemView);
+        set.start();
     }
 
 }

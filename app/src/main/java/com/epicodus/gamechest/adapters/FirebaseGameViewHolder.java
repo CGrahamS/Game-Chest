@@ -19,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,7 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements V
     public void bindGame(Game game) {
         ImageView gameImageView = (ImageView) mView.findViewById(R.id.gameImageView);
         TextView gameNameTextView = (TextView) mView.findViewById(R.id.gameNameTextView);
+        TextView gameReleaseDateTextView = (TextView) mView.findViewById(R.id.gameReleaseDateTextView);
         TextView gamePlatformsTextView = (TextView) mView.findViewById(R.id.gamePlatformsTextView);
 
         Picasso.with(mContext)
@@ -46,6 +48,7 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements V
 
 
         gameNameTextView.setText(game.getName());
+        gameReleaseDateTextView.setText(game.getReleaseDate());
         gamePlatformsTextView.setText("Platforms: " + android.text.TextUtils.join(", ", game.getPlatforms()));
     }
 

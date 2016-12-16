@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/gameImageView"
+        android:src="@drawable/lttp"
+        android:scaleType="fitCenter"/>
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:id="@+id/gameDetailsLayout">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The Legend of Zelda: A Link to the Past"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:id="@+id/gameNameTextView"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Released: 1991-11-21 00:00:00"
+                android:id="@+id/gameReleaseDateTextView"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Platforms: SNES"
+                android:id="@+id/gamePlatformsTextView"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/gameDetailsLayout"
+            android:layout_alignRight="@+id/gameDetailsLayout"
+            android:src="@drawable/ic_reorder_black_24dp"
+            android:id="@+id/dragIcon" />
+        
+    </RelativeLayout>
+
+</LinearLayout>

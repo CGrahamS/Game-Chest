@@ -3,8 +3,10 @@ package com.epicodus.gamechest.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.epicodus.gamechest.Constants;
@@ -19,16 +21,16 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by CGrahamS on 12/9/16.
- */
 public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static final String TAG = FirebaseGameViewHolder.class.getSimpleName();
     View mView;
     Context mContext;
+    public LinearLayout mGameDetailsLayout;
 
     public FirebaseGameViewHolder(View itemView) {
         super(itemView);
@@ -40,7 +42,9 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements V
     public void bindGame(Game game) {
         ImageView gameImageView = (ImageView) mView.findViewById(R.id.gameImageView);
         TextView gameNameTextView = (TextView) mView.findViewById(R.id.gameNameTextView);
+        TextView gameReleaseDateTextView = (TextView) mView.findViewById(R.id.gameReleaseDateTextView);
         TextView gamePlatformsTextView = (TextView) mView.findViewById(R.id.gamePlatformsTextView);
+        mGameDetailsLayout = (LinearLayout) mView.findViewById(R.id.gameDetailsLayout);
 
         Picasso.with(mContext)
                 .load(game.getImage())
@@ -48,6 +52,7 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements V
 
 
         gameNameTextView.setText(game.getName());
+        gameReleaseDateTextView.setText(game.getReleaseDate());
         gamePlatformsTextView.setText("Platforms: " + android.text.TextUtils.join(", ", game.getPlatforms()));
     }
 
@@ -64,12 +69,11 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements V
                 }
 
                 int itemPosition = getLayoutPosition();
-
                 Intent intent = new Intent(mContext, GameDetailActivity.class);
-                intent.putExtra("position", itemPosition + "");
+                intent.putExtra("position", itemPosition);
                 intent.putExtra("games", Parcels.wrap(games));
-
                 mContext.startActivity(intent);
+
             }
 
             @Override

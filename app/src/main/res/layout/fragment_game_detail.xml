@@ -8,20 +8,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/lttp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitCenter"
+            android:id="@+id/gameDetailImageView" />
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/gameDetailImageView"
             android:padding="5dp"
             android:id="@+id/gameDetailBlock">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:src="@drawable/lttp"
-                android:scaleType="fitCenter"
-                android:layout_marginBottom="10dp"
-                android:id="@+id/gameDetailImageView" />
 
             <TextView
                 android:layout_width="match_parent"

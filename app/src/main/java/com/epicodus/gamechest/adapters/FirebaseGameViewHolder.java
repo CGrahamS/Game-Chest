@@ -23,12 +23,10 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by CGrahamS on 12/9/16.
- */
 public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     View mView;
     Context mContext;
+    final ArrayList<Game> games = new ArrayList<>();
 
     public FirebaseGameViewHolder(View itemView) {
         super(itemView);
@@ -53,7 +51,12 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements V
 
     @Override
     public void onClick(View v) {
-        final ArrayList<Game> games = new ArrayList<>();
+        int itemPosition = getLayoutPosition();
+        Intent intent = new Intent(mContext, GameDetailActivity.class);
+        intent.putExtra("position", itemPosition);
+        intent.putExtra("games", Parcels.wrap(games));
+        mContext.startActivity(intent);
+
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_USERS);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -62,14 +65,6 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements V
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     games.add(snapshot.getValue(Game.class));
                 }
-
-                int itemPosition = getLayoutPosition();
-
-                Intent intent = new Intent(mContext, GameDetailActivity.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("games", Parcels.wrap(games));
-
-                mContext.startActivity(intent);
             }
 
             @Override

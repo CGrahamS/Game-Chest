@@ -51,8 +51,8 @@ public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.GameVi
     }
 
     public class GameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private static final int MAX_WIDTH = 120;
-        private static final int MAX_HEIGHT = 120;
+        private static final int MAX_WIDTH = 100;
+        private static final int MAX_HEIGHT = 100;
         @Bind(R.id.gameImageView) ImageView mGameImageView;
         @Bind(R.id.gameNameTextView) TextView mGameNameTextView;
         @Bind(R.id.gameReleaseDateTextView) TextView mGameReleaseDateTextView;

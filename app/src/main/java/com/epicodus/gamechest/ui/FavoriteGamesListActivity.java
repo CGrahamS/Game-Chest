@@ -50,7 +50,7 @@ public class FavoriteGamesListActivity extends AppCompatActivity {
 
     public void setUpFirebaseAdapter() {
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Game, FirebaseGameViewHolder>
-                (Game.class, R.layout.game_list_item, FirebaseGameViewHolder.class,
+                (Game.class, R.layout.game_list_item_drag, FirebaseGameViewHolder.class,
                         mGameReference) {
             @Override
             protected void populateViewHolder(FirebaseGameViewHolder viewHolder,

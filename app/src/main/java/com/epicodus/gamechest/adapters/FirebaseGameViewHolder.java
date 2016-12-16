@@ -3,6 +3,7 @@ package com.epicodus.gamechest.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,9 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static final String TAG = FirebaseGameViewHolder.class.getSimpleName();
     View mView;
     Context mContext;
-    final ArrayList<Game> games = new ArrayList<>();
 
     public FirebaseGameViewHolder(View itemView) {
         super(itemView);
@@ -54,12 +55,7 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements V
 
     @Override
     public void onClick(View v) {
-        int itemPosition = getLayoutPosition();
-        Intent intent = new Intent(mContext, GameDetailActivity.class);
-        intent.putExtra("position", itemPosition);
-        intent.putExtra("games", Parcels.wrap(games));
-        mContext.startActivity(intent);
-
+        final ArrayList<Game> games = new ArrayList<>();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_USERS);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
@@ -68,6 +64,13 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements V
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     games.add(snapshot.getValue(Game.class));
                 }
+
+                int itemPosition = getLayoutPosition();
+                Intent intent = new Intent(mContext, GameDetailActivity.class);
+                intent.putExtra("position", itemPosition);
+                intent.putExtra("games", Parcels.wrap(games));
+                mContext.startActivity(intent);
+
             }
 
             @Override

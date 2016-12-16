@@ -19,6 +19,7 @@ public class Game {
     private String deck;
     private int id;
     private String pushId;
+    String index;
 
     public Game() {}
 
@@ -31,6 +32,7 @@ public class Game {
         this.siteDetailUrl = siteDetailUrl;
         this.deck = deck;
         this.id = id;
+        this.index = "not_specified";
     }
 
     public Game(String name, String image, String releaseDate, ArrayList<String> platforms,  String siteDetailUrl, String deck, int id) {
@@ -83,4 +85,11 @@ public class Game {
         this.pushId = pushId;
     }
 
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
+    }
 }

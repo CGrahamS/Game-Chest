@@ -26,7 +26,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class FirebaseGameViewHolder extends RecyclerView.ViewHolder {
     public static final String TAG = FirebaseGameViewHolder.class.getSimpleName();
     View mView;
     Context mContext;
@@ -36,7 +36,6 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements V
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
-        itemView.setOnClickListener(this);
     }
 
     public void bindGame(Game game) {
@@ -56,30 +55,4 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements V
         gamePlatformsTextView.setText("Platforms: " + android.text.TextUtils.join(", ", game.getPlatforms()));
     }
 
-    @Override
-    public void onClick(View v) {
-        final ArrayList<Game> games = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_USERS);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    games.add(snapshot.getValue(Game.class));
-                }
-
-                int itemPosition = getLayoutPosition();
-                Intent intent = new Intent(mContext, GameDetailActivity.class);
-                intent.putExtra("position", itemPosition);
-                intent.putExtra("games", Parcels.wrap(games));
-                mContext.startActivity(intent);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
 }

@@ -41,7 +41,7 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback{
     }
 
     @Override
-    public boolean onSwiped(RecyclerView.ViewHolder viewHolder, int i) {
+    public void onSwiped(RecyclerView.ViewHolder viewHolder, int i) {
         mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
     }
 }

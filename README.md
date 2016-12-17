@@ -43,5 +43,6 @@ ButterKnife_
 ### License
 
 This webpage is licensed under the GPL license.
+Icon made by Freepik from www.flaticon.com 
 
 Copyright &copy; 2016 **_Caleb Stevenson_**

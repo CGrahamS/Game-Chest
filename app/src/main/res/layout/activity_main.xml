@@ -6,22 +6,21 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ui.MainActivity">
 
-    <TextView
-        style="@style/customHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="72dp"
-        android:text="@string/main_header"
-        android:id="@+id/mainHeaderTextView"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/mainButtonLayout"
+        android:src="@drawable/treasureicon"
+        android:id="@+id/headerImageView"/>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:gravity="center_vertical"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/mainButtonLayout">
 
         <Button
             style="@style/CustomButton"
@@ -37,15 +36,14 @@
             android:text="@string/game_browse_button"
             android:id="@+id/gameBrowseButton"/>
 
+        <Button
+            style="@style/CustomButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Favorited Games"
+            android:visibility="gone"
+            android:id="@+id/favoritedGamesButton"/>
 
     </LinearLayout>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Favorited Games"
-        android:visibility="gone"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/favoritedGamesButton"/>
 
 </RelativeLayout>

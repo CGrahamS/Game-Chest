@@ -12,6 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:src="@drawable/lttp"
+            android:paddingTop="5dp"
             android:layout_marginBottom="10dp"
             android:layout_gravity="center_horizontal"
             android:scaleType="fitCenter"
@@ -65,6 +66,7 @@
             android:id="@+id/gameDetailDeck"/>
 
         <Button
+            style="@style/CustomButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/gameDetailUrl"

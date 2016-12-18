@@ -1,4 +1,6 @@
-## Game Chest
+![Game Chest Icon]
+(treasureicon.png)
+
 ### _Epicodus: Android (Weekly Project)_
 
 #### By _[**Caleb Stevenson**](https://github.com/CGrahamS)_

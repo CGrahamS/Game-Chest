@@ -1,6 +1,7 @@
 package com.epicodus.gamechest.ui;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,9 +22,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-    @Bind(R.id.mainHeaderTextView)
-    TextView mMainHeaderTextView;
 
     @Bind(R.id.gameSearchButton)
     Button mGameSearchButton;
@@ -46,6 +44,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ButterKnife.bind(this);
 
         getSupportActionBar().setTitle("Welcome to Game Chest!");
+
+        Typeface headerFont = Typeface.createFromAsset(getAssets(), "fonts/gothic.ttf");
+//        mMainHeaderTextView.setTypeface(headerFont);
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {

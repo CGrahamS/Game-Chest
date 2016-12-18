@@ -1,5 +1,8 @@
-![Game Chest Icon]
-(treasureicon.png)
+
+<p align="center">
+  <img src=treasureicon.png height=300px/>
+</p>
+
 
 ### _Epicodus: Android (Weekly Project)_
 

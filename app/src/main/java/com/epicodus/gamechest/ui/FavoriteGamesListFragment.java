@@ -49,7 +49,7 @@ public class FavoriteGamesListFragment extends Fragment implements OnStartDragLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_favorite_games_list, container, false);
-        ButterKnife.bind(getActivity());
+        ButterKnife.bind(this, view);
 
         mGameListTextView.setText("Favorite Games");
 

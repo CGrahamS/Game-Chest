@@ -54,18 +54,10 @@ public class GameSearchListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(getActivity());
 
         mGameSearchSharedPreference = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        mRecentGame = mGameSearchSharedPreference.getString(Constants.PREFERENCES_GAME_KEY, null);
-        if (mRecentGame != null) {
-            mGameListTextView.setText("Results for: " + '"' + mRecentGame + '"');
-            createSearchProgressDialog();
-            getGames(mRecentGame);
-        } else {
-            createSearchProgressDialog();
-            mGameListTextView.setText("Search for a Game!");
-        }
+        mGameSearchPreferenceEditor = mGameSearchSharedPreference.edit();
+
         setHasOptionsMenu(true);
     }
 
@@ -79,8 +71,14 @@ public class GameSearchListFragment extends Fragment {
         mRecentGame = mGameSearchSharedPreference.getString(Constants.PREFERENCES_GAME_KEY, null);
 
         if (mRecentGame != null) {
+            mGameListTextView.setText("Results for: " + '"' + mRecentGame + '"');
+            createSearchProgressDialog();
             getGames(mRecentGame);
+        } else {
+            createSearchProgressDialog();
+            mGameListTextView.setText("Search for a Game!");
         }
+
         // Inflate the layout for this fragment
         return view;
     }

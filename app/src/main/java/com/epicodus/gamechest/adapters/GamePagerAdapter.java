@@ -22,7 +22,7 @@ public class GamePagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return GameDetailFragment.newInstance(mGames.get(position));
+        return GameDetailFragment.newInstance(mGames, position);
     }
 
     @Override

@@ -27,6 +27,7 @@ import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -62,11 +63,16 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
     TextView mGameDetailUrl;
 
     private Game mGame;
+    private ArrayList<Game> mGames;
+    private int mPosition;
 
-    public static GameDetailFragment newInstance(Game game) {
+    public static GameDetailFragment newInstance(ArrayList<Game> games, Integer position) {
         GameDetailFragment gameDetailFragment = new GameDetailFragment();
         Bundle args = new Bundle();
-        args.putParcelable("game", Parcels.wrap(game));
+
+        args.putParcelable(Constants.EXTRA_KEY_GAMES, Parcels.wrap(games));
+        args.putInt(Constants.EXTRA_KEY_POSITION, position);
+
         gameDetailFragment.setArguments(args);
         return gameDetailFragment;
     }
@@ -74,7 +80,9 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mGame = Parcels.unwrap(getArguments().getParcelable("game"));
+        mGames = Parcels.unwrap(getArguments().getParcelable(Constants.EXTRA_KEY_GAMES));
+        mPosition = getArguments().getInt(Constants.EXTRA_KEY_POSITION);
+        mGame = mGames.get(mPosition);
     }
 
     @Override

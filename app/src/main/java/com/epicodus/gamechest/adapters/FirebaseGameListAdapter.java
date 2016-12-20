@@ -98,10 +98,15 @@ public class FirebaseGameListAdapter extends FirebaseRecyclerAdapter<Game, Fireb
         viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext, GameDetailActivity.class);
-                intent.putExtra(Constants.EXTRA_KEY_POSITION, viewHolder.getAdapterPosition());
-                intent.putExtra(Constants.EXTRA_KEY_GAMES, Parcels.wrap(mGames));
-                mContext.startActivity(intent);
+                int itemPosition = viewHolder.getLayoutPosition();
+                if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+                    createDetailFragment(itemPosition);
+                } else {
+                    Intent intent = new Intent(mContext, GameDetailActivity.class);
+                    intent.putExtra(Constants.EXTRA_KEY_POSITION, viewHolder.getAdapterPosition());
+                    intent.putExtra(Constants.EXTRA_KEY_GAMES, Parcels.wrap(mGames));
+                    mContext.startActivity(intent);
+                }
             }
         });
 

@@ -5,18 +5,9 @@
     android:layout_height="wrap_content"
     android:padding="5dp">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginRight="5dp"
-        android:id="@+id/gameImageView"
-        android:src="@drawable/lttp"
-        android:scaleType="fitCenter"/>
-    
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
-
 
         <LinearLayout
             android:orientation="vertical"
@@ -24,6 +15,14 @@
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
             android:id="@+id/gameDetailsLayout">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="5dp"
+                android:id="@+id/gameImageView"
+                android:src="@drawable/lttp"
+                android:scaleType="fitCenter"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -37,24 +36,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Released: 1991-11-21 00:00:00"
-                android:id="@+id/gameReleaseDateTextView"/>
+                android:id="@+id/gameReleaseDateTextView"
+                android:visibility="gone"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Platforms: SNES"
-                android:id="@+id/gamePlatformsTextView"/>
+                android:id="@+id/gamePlatformsTextView"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_alignBottom="@+id/gameDetailsLayout"
+            android:layout_alignTop="@+id/gameDetailsLayout"
             android:layout_alignRight="@+id/gameDetailsLayout"
             android:src="@drawable/ic_reorder_black_24dp"
             android:id="@+id/dragIcon" />
-        
+
     </RelativeLayout>
 
 </LinearLayout>

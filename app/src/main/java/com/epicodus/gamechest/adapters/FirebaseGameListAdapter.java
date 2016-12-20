@@ -2,12 +2,18 @@ package com.epicodus.gamechest.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MotionEventCompat;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.epicodus.gamechest.Constants;
+import com.epicodus.gamechest.R;
 import com.epicodus.gamechest.models.Game;
 import com.epicodus.gamechest.ui.GameDetailActivity;
+import com.epicodus.gamechest.ui.GameDetailFragment;
 import com.epicodus.gamechest.util.ItemTouchHelperAdapter;
 import com.epicodus.gamechest.util.OnStartDragListener;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -31,6 +37,7 @@ public class FirebaseGameListAdapter extends FirebaseRecyclerAdapter<Game, Fireb
     private OnStartDragListener mOnStartDragListener;
     private ChildEventListener mChildEventListener;
     private ArrayList<Game> mGames = new ArrayList<>();
+    private int mOrientation;
 
     public FirebaseGameListAdapter(Class<Game> modelClass, int modelLayout,
                                    Class<FirebaseGameViewHolder> viewHolderClass,
@@ -71,6 +78,13 @@ public class FirebaseGameListAdapter extends FirebaseRecyclerAdapter<Game, Fireb
     @Override
     protected void populateViewHolder(final FirebaseGameViewHolder viewHolder, Game model, int position) {
         viewHolder.bindGame(model);
+
+        mOrientation = viewHolder.itemView.getResources().getConfiguration().orientation;
+
+        if (mOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+            createDetailFragment(0);
+        }
+
         viewHolder.mGameDetailsLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -85,12 +99,20 @@ public class FirebaseGameListAdapter extends FirebaseRecyclerAdapter<Game, Fireb
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, GameDetailActivity.class);
-                intent.putExtra("position", viewHolder.getAdapterPosition());
-                intent.putExtra("games", Parcels.wrap(mGames));
+                intent.putExtra(Constants.EXTRA_KEY_POSITION, viewHolder.getAdapterPosition());
+                intent.putExtra(Constants.EXTRA_KEY_GAMES, Parcels.wrap(mGames));
                 mContext.startActivity(intent);
             }
         });
 
+    }
+
+    public void createDetailFragment(int position) {
+        GameDetailFragment detailFragment = GameDetailFragment.newInstance(mGames, position);
+
+        FragmentTransaction ft = ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.gameDetailContainer, detailFragment);
+        ft.commit();
     }
 
     @Override

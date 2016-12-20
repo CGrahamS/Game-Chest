@@ -3,31 +3,16 @@ package com.epicodus.gamechest.adapters;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.epicodus.gamechest.Constants;
 import com.epicodus.gamechest.R;
 import com.epicodus.gamechest.models.Game;
-import com.epicodus.gamechest.ui.GameDetailActivity;
 import com.epicodus.gamechest.util.ItemTouchHelperViewHolder;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
-
-import org.parceler.Parcels;
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
     public static final String TAG = FirebaseGameViewHolder.class.getSimpleName();
@@ -51,7 +36,6 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements I
         Picasso.with(mContext)
                 .load(game.getImage())
                 .into(gameImageView);
-
 
         gameNameTextView.setText(game.getName());
         gameReleaseDateTextView.setText(game.getReleaseDate());

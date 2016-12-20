@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/gameImageView"
+            android:src="@drawable/lttp"
+            android:scaleType="fitCenter"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GAME NAME"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:id="@+id/gameNameTextView"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Released: DATE"
+            android:id="@+id/gameReleaseDateTextView"
+            android:visibility="gone"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Platforms: PLATFORMS"
+            android:id="@+id/gamePlatformsTextView"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+</LinearLayout>

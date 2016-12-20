@@ -1,6 +1,100 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.GameDetailFragment">
 
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:id="@+id/gameDetailBlock"
+            android:layout_toLeftOf="@+id/saveToFavoritesButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/lttp"
+                    android:paddingTop="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:scaleType="fitCenter"
+                    android:id="@+id/gameDetailImageView"
+                    android:layout_alignParentTop="true"/>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:id="@+id/gameSpecificsBlock">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:text="The Legend of Zelda: A Link to the Past"
+                    android:id="@+id/gameDetailHeaderTextView"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="11/12/1990"
+                    android:id="@+id/gameDetailReleaseTextView" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ESRB: E"
+                    android:id="@+id/gameDetailRatingTextView"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Platforms: SNES, WSHP, WiiU, N3DS"
+                    android:id="@+id/gameDetailPlatformsTextView"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="GiantBomb.com"
+                    android:drawableLeft="@drawable/ic_link_black_24dp"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical"
+                    android:id="@+id/gameDetailUrl" />
+
+            </LinearLayout>
+
+    </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/gameDetailBlock"
+            android:padding="5dp"
+            android:scrollbars="vertical"
+            android:text="The third installment in the Zelda series makes a return to the top-down 2D gameplay found in the first game. This time around, Link needs to travel between the light and dark world in order to set things straight in the kingdom of Hyrule."
+            android:id="@+id/gameDetailDeck" />
+
+        <Button
+            style="@style/CustomButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Favorite"
+            android:id="@+id/saveToFavoritesButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+
+</FrameLayout>

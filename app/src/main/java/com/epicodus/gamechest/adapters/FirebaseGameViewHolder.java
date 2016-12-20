@@ -73,5 +73,4 @@ public class FirebaseGameViewHolder extends RecyclerView.ViewHolder implements I
         set.setTarget(itemView);
         set.start();
     }
-
 }

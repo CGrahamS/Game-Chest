@@ -94,7 +94,7 @@ public class GameDetailFragment extends Fragment implements View.OnClickListener
 
         mGameDetailHeaderTextView.setText(mGame.getName());
         mGameDetailReleaseTextView.setText("Released: " + mGame.getReleaseDate());
-        mGameDetailRatingTextView.setText("Original Rating: " + mGame.getContentRating());
+        mGameDetailRatingTextView.setText(mGame.getContentRating());
         mGameDetailPlatformsTextView.setText("Platforms: " + android.text.TextUtils.join(", ", mGame.getPlatforms()));
         mGameDetailDeck.setText(mGame.getDeck());
         mGameDetailDeck.setMovementMethod(new ScrollingMovementMethod());

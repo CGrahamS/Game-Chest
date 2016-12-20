@@ -3,8 +3,6 @@
     <string name="main_header">GAME CHEST</string>
     <string name="game_search_hint">Zelda...</string>
     <string name="game_search_button">SEARCH GAMES</string>
-    <string name="game_browse_button">BROWSE GAMES</string>
-    <string name="platform_browse_button">BROWSE PLATFORMS</string>
     <string name="sign_in_button">SIGN IN</string>
     <string name="platform_spinner_prompt">Platforms</string>
 
@@ -17,4 +15,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about_game_chest">About Game Chest</string>
+    <string name="game_about_button">About</string>
+    <string name="developed_by">Developed by, Caleb Stevenson</string>
+    <string name="icon_by">Icon made by Freepik from www.flaticon.com</string>
 </resources>

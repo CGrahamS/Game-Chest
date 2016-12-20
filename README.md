@@ -20,6 +20,7 @@ Game Chest will allow users to search and browse for games. Then they'll be able
 | Program navigates to different activities               |          |          |
 | Program passes user input from one activity to another. | Zelda    | Zelda
 | Program retrieves best matches to user search query.    | Zelda    | Results for "Zelda" <ol><li>The Legend of Zelda</li><li>Zelda II: The Adventure of Link</li><li>The Legend Of Zelda: The Wind Waker</li></ol>|
+| Program saves games to favorites list.                  |          | Results for "Zelda" <ol><li>The Legend of Zelda: A Link To The Past</li><<li>Super Mario Brothers</li></ol>|
 
 ## Setup/Installation Requirements
 
@@ -33,7 +34,7 @@ Game Chest will allow users to search and browse for games. Then they'll be able
 
 ## Known Bugs
 
-None Yet
+Scrolling on Favorite Game's activity is unwieldy because the item drag is set on entire list item.
 
 ## Support and contact details
 

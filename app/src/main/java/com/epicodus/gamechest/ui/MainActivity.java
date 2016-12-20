@@ -5,13 +5,11 @@ import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.gamechest.R;
@@ -122,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
         if (v == mGameBrowseButton) {
-            Intent intent = new Intent(MainActivity.this, GameBrowseActivity.class);
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(intent);
         }
         if (v == mFavoritedGamesButton) {

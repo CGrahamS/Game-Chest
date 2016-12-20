@@ -33,7 +33,7 @@
             style="@style/CustomButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/game_browse_button"
+            android:text="@string/game_about_button"
             android:id="@+id/gameBrowseButton"/>
 
         <Button
